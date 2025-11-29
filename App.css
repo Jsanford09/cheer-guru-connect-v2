@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Custom Cheer Guru Connect Color Scheme */
+:root {
+  --oxford-blue: #002147;
+  --teal: #008080;
+  --white: #ffffff;
+  --light-teal: #20b2aa;
+  --dark-blue: #001a35;
+  --gradient-primary: linear-gradient(135deg, var(--oxford-blue) 0%, var(--teal) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--teal) 0%, var(--light-teal) 100%);
+  --gradient-accent: linear-gradient(45deg, var(--oxford-blue) 0%, var(--teal) 50%, var(--light-teal) 100%);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--white);
+  --color-foreground: var(--oxford-blue);
+  --color-card: var(--white);
+  --color-card-foreground: var(--oxford-blue);
+  --color-popover: var(--white);
+  --color-popover-foreground: var(--oxford-blue);
+  --color-primary: var(--oxford-blue);
+  --color-primary-foreground: var(--white);
+  --color-secondary: var(--teal);
+  --color-secondary-foreground: var(--white);
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
+  --color-accent: var(--teal);
+  --color-accent-foreground: var(--white);
+  --color-destructive: #ef4444;
+  --color-border: #e2e8f0;
+  --color-input: #f1f5f9;
+  --color-ring: var(--teal);
+  --color-chart-1: var(--oxford-blue);
+  --color-chart-2: var(--teal);
+  --color-chart-3: var(--light-teal);
+  --color-chart-4: #0891b2;
+  --color-chart-5: #0e7490;
+  --color-sidebar: var(--white);
+  --color-sidebar-foreground: var(--oxford-blue);
+  --color-sidebar-primary: var(--oxford-blue);
+  --color-sidebar-primary-foreground: var(--white);
+  --color-sidebar-accent: var(--teal);
+  --color-sidebar-accent-foreground: var(--white);
+  --color-sidebar-border: #e2e8f0;
+  --color-sidebar-ring: var(--teal);
+}
+
+.dark {
+  --color-background: var(--oxford-blue);
+  --color-foreground: var(--white);
+  --color-card: var(--dark-blue);
+  --color-card-foreground: var(--white);
+  --color-popover: var(--dark-blue);
+  --color-popover-foreground: var(--white);
+  --color-primary: var(--teal);
+  --color-primary-foreground: var(--oxford-blue);
+  --color-secondary: var(--light-teal);
+  --color-secondary-foreground: var(--oxford-blue);
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8;
+  --color-accent: var(--light-teal);
+  --color-accent-foreground: var(--oxford-blue);
+  --color-destructive: #ef4444;
+  --color-border: #334155;
+  --color-input: #1e293b;
+  --color-ring: var(--light-teal);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom gradient classes */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 128, 128, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 128, 128, 0.6); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 33, 71, 0.15);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--white);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 33, 71, 0.3);
+}
+
+.btn-secondary {
+  background: var(--gradient-secondary);
+  color: var(--white);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 128, 128, 0.3);
+}
+
+/* Tab styles */
+.tab-active {
+  background: var(--gradient-primary);
+  color: var(--white);
+}
+
+.tab-inactive {
+  background: transparent;
+  color: var(--oxford-blue);
+  border: 2px solid var(--teal);
+}
+
+.tab-inactive:hover {
+  background: var(--teal);
+  color: var(--white);
+}
+
+/* Form styles */
+.form-input {
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--teal);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive design helpers */
+@media (max-width: 768px) {
+  .mobile-stack {
+    flex-direction: column;
+  }
+  
+  .mobile-full {
+    width: 100%;
+  }
+}
+
